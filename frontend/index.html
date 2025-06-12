@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatBI - 数据可视化 Demo</title>
+    <!-- Tailwind build -->
+    <link href="./dist/style.css" rel="stylesheet" />
+    <!-- highlight.js 主题 -->
+    <link rel="stylesheet" href="https://unpkg.com/highlight.js@11.9.0/styles/github-dark.min.css" />
+    <!-- ECharts Core -->
+    <script src="https://unpkg.com/echarts@5.5.0/dist/echarts.min.js"></script>
+    <!-- 一些流行主题（可按需删减） -->
+    <script src="https://unpkg.com/echarts@5.5.0/theme/vintage.js"></script>
+    <script src="https://unpkg.com/echarts@5.5.0/theme/macarons.js"></script>
+    <script src="https://unpkg.com/echarts@5.5.0/theme/dark.js"></script>
+    <!-- highlight.js & sql-formatter -->
+    <script src="https://unpkg.com/highlight.js@11.9.0/lib/common.min.js"></script>
+    <script src="https://unpkg.com/sql-formatter@9.0.0/dist/sql-formatter.min.js"></script>
+    <!-- 主逻辑 -->
+    <script src="./js/main.js" defer></script>
+</head>
+<body class="bg-gray-100 font-sans">
+<!-- 视口满高，禁止整页滚动 -->
+<div class="container mx-auto max-w-7xl h-screen overflow-hidden p-4">
+    <main class="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+
+        <!-- ▼ 左侧：技术细节 -->
+        <section class="bg-white rounded-lg shadow-md p-4 flex flex-col h-full overflow-hidden">
+
+
+            <!-- 固定高度布局 -->
+            <div class="flex flex-col gap-4 overflow-hidden">
+                <!-- Generated SQL -->
+                <div class="flex flex-col flex-none">
+                    <h3 class="text-lg font-semibold text-gray-600 mb-2">Generated SQL</h3>
+                    <div class="bg-gray-800 text-white font-mono p-3 rounded-md text-sm h-48 overflow-x-auto overflow-y-auto">
+                        <pre><code id="sql-code">// 等待用户提问…</code></pre>
+                    </div>
+                </div>
+
+                <!-- Raw Data -->
+                <div class="flex flex-col flex-none">
+                    <h3 class="text-lg font-semibold text-gray-600 mb-2">Raw Data</h3>
+                    <div id="raw-data-box" class="bg-gray-100 border border-gray-300 p-3 rounded-md text-sm h-48 overflow-x-auto overflow-y-auto">
+                        <pre class="whitespace-pre-wrap"><code id="raw-data">[]</code></pre>
+                    </div>
+                </div>
+
+                <!-- 图表控制条 & ECharts -->
+                <div class="flex flex-col flex-none">
+                    <div class="flex flex-wrap items-center gap-2 mb-2 text-sm">
+                        <span class="text-gray-600">图表类型：</span>
+                        <select id="chart-type" class="border border-gray-300 rounded px-2 py-1">
+                            <option value="bar">柱状图</option>
+                            <option value="line">折线图</option>
+                            <option value="pie">饼图</option>
+                            <option value="scatter">散点图</option>
+                            <option value="barline">折柱混合</option>
+                        </select>
+
+                        <span class="ml-4 text-gray-600">主题：</span>
+                        <select id="theme-select" class="border border-gray-300 rounded px-2 py-1">
+                            <option value="">默认</option>
+                            <option value="vintage">vintage</option>
+                            <option value="macarons">macarons</option>
+                            <option value="dark">dark</option>
+                        </select>
+
+                        <button id="draw-btn" class="bg-blue-500 text-white rounded px-3 py-1">绘制</button>
+                    </div>
+                    <!-- 图表固定高度 -->
+                    <div id="chart-box" class="w-full h-80"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ▼ 右侧：聊天窗口 -->
+        <section class="bg-white rounded-lg shadow-md p-4 flex flex-col h-full overflow-hidden">
+            <h2 class="text-xl font-bold text-gray-700 mb-4 flex-shrink-0">聊天窗口</h2>
+            <div id="chat-window" class="flex-grow min-h-0 overflow-y-auto mb-4 p-2 space-y-4">
+                <div class="flex justify-start">
+                    <div class="bg-gray-200 text-black rounded-lg px-4 py-2 max-w-xs">
+                        你好！我是您的数据分析助手。你可以问：“各个职称的专家有多少？”
+                    </div>
+                </div>
+            </div>
+            <form id="chat-form" class="flex gap-2 flex-shrink-0">
+                <input id="chat-input" type="text" autocomplete="off" placeholder="请输入你的问题…" class="flex-grow border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                <button type="submit" class="bg-blue-600 text-white font-bold rounded-lg px-6 py-2 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-400">发送</button>
+            </form>
+        </section>
+
+    </main>
+</div>
+</body>
+</html>

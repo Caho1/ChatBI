@@ -1,0 +1,14 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Frontend for ChatBI",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/style.css -o ./dist/style.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "sql-formatter": "^15.6.3"
+  }
+}
