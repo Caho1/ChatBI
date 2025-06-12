@@ -1,8 +1,8 @@
 # ChatBI
 
-
-
 一个基于 **Tailwind CSS** + **ECharts** + **LLM 驱动**的交互式数据可视化演示。用户在右侧聊天窗口输入自然语言查询，前端通过 AI 生成 SQL、调用后端接口拉取数据，并实时在左侧渲染表格和图表。支持多种图表类型、主题切换，以及一键展开深度解析。
+
+![image](https://github.com/user-attachments/assets/269236b7-8b59-492c-9194-1ff33429b71a)
 
 ## 主要功能
 
